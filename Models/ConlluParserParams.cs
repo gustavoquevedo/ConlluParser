@@ -7,19 +7,25 @@ namespace ConlluParser.Models
         [DisplayName("CoNLL-U file")]
         public string ConlluFilePath { get; set; }
 
+        [DisplayName("Convert to Lowercase")]
+        public bool ToLowerCase { get; set; }
+
         [DisplayName("Remove Punctuation")]
         public bool RemovePunctuation { get; set; }
 
-        [DisplayName("Convert to lowercase")]
-        public bool ToLowerCase { get; set; }
-
-        [DisplayName("Remove comments")]
+        [DisplayName("Remove Comments")]
         public bool RemoveComments { get; set; }
 
-        [DisplayName("Remove range lines")]
+        [DisplayName("Remove Range lines")]
         public bool RemoveRangeLines { get; set; }
 
-        [DisplayName("Remove lines with subindexes")]
+        [DisplayName("Remove lines with Subindexes")]
         public bool RemoveSubindexLines { get; set; }
+
+        [DisplayName("Divide with Empty lines")]
+        public bool DivideWithEmptyLines { get; set; }
+
+        public string CorpusName { get; set; }
+        public string Dataset { get; set; }
     }
 }

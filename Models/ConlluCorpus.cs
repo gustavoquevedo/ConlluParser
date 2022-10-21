@@ -43,10 +43,21 @@ namespace ConlluParser.Models
             .SelectMany(s => s.Lines)
             .Where(l => l.IsRange).Count();
 
-        public override string ToString()
+        public string GetOutput(bool divideWithEmptyLine = false, int maxLines = 0)
         {
             var content = Sentences.Select(s => s.ToString());
-            return string.Join("\r\n\r\n", Sentences);
+            if (maxLines > 0)
+            {
+                content = content.Take(maxLines);
+                if (content.Any())
+                {
+                    content = content.Concat(new List<string> { $"===== Content has been limited to {maxLines} lines =====" });
+                }
+            }
+            var separator = divideWithEmptyLine
+                ? "\r\n\r\n"
+                : "\r\n";
+            return string.Join(separator, content);
         }
     }
 }
